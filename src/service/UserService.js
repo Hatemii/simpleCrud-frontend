@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from 'axios';
 
-const Students_Rest_Api = "http://localhost:8080/students"
+const Students_Rest_Api = "http://localhost:8080/students";
 
 class UserService {
 
@@ -9,4 +9,4 @@ class UserService {
     }
 }
 
-export default UserService();
+export default new UserService();
