@@ -9,6 +9,8 @@ class UserComponent extends React.Component {
         this.state = {
             students: []
         }
+
+        this.deleteById = this.deleteById.bind(this);
     }
 
 
@@ -17,6 +19,14 @@ class UserComponent extends React.Component {
             this.setState({
                 students: response.data
             })
+        });
+    }
+
+    deleteById(id) {
+        UserService.deleteById(id).then(response => {
+            this.setState({
+                students: this.state.students.filter(student => student.id !== id)
+            });
         });
     }
 
@@ -44,6 +54,16 @@ class UserComponent extends React.Component {
                                         <td>{student.id}</td>
                                         <td>{student.name}</td>
                                         <td>{student.course}</td>
+
+                                        <td>
+                                            <button
+                                                style={{ marginLeft: "10px" }}
+                                                onClick={() => {
+                                                    if (window.confirm('Are you sure you wish to delete this item?'))
+                                                        this.deleteById(student.id)
+                                                }}
+                                                className="btn btn-danger">Delete</button>
+                                        </td>
                                     </tr>
                             )
                         }
