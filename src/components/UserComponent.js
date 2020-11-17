@@ -9,25 +9,27 @@ class UserComponent extends React.Component {
         this.state = {
             students: []
         }
-
-        this.deleteById = this.deleteById.bind(this);
     }
 
 
     componentDidMount() {
-        UserService.getAllStudents().then((response) => {
+        UserService.getAllStudents().then(response => {
             this.setState({
                 students: response.data
             })
         });
     }
 
-    deleteById(id) {
+    deleteById = (id) => {
         UserService.deleteById(id).then(response => {
             this.setState({
                 students: this.state.students.filter(student => student.id !== id)
             });
         });
+    }
+
+    viewStudent(id) {
+        this.props.history.push(`/view-student/${id}`);
     }
 
 
@@ -63,6 +65,11 @@ class UserComponent extends React.Component {
                                                         this.deleteById(student.id)
                                                 }}
                                                 className="btn btn-danger">Delete</button>
+
+                                            <button
+                                                style={{ marginLeft: "10px" }}
+                                                onClick={() => this.viewStudent(student.id)}
+                                                className="btn btn-info">View</button>
                                         </td>
                                     </tr>
                             )

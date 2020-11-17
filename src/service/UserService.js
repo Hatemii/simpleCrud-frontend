@@ -8,8 +8,16 @@ class UserService {
         return axios.get(Students_Rest_Api);
     }
 
+    getStudentById(id) {
+        return axios.get(Students_Rest_Api + "/" + id);
+    }
+
     deleteById(id) {
         return axios.get(Students_Rest_Api + '/' + id);
+    }
+
+    insert(student) {
+        return axios.post(Students_Rest_Api, student);
     }
 }
 
