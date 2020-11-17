@@ -9,6 +9,11 @@ class UserComponent extends React.Component {
         this.state = {
             students: []
         }
+
+        this.deleteById = this.deleteById.bind(this);
+        this.viewStudent = this.viewStudent.bind(this);
+        this.addStundent = this.addStundent.bind(this);
+
     }
 
 
@@ -52,7 +57,7 @@ class UserComponent extends React.Component {
                     className="btn btn-success">Add New Student</button>
 
 
-                <table class="table table-hover table-dark">
+                <table className="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th>Id</th>

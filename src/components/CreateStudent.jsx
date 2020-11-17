@@ -11,9 +11,6 @@ class CreateStudent extends Component {
             course: ""
         }
 
-        this.changeNameHolder = this.changeCourseHandler.bind.this
-        this.changeCourseHandler = this.changeCourseHandler.bind.this
-
     }
 
     componentDidMount() {
@@ -46,6 +43,26 @@ class CreateStudent extends Component {
         }
     }
 
+
+    saveOrUpdateButton = (e) => {
+        e.preventDefault();
+        let student = {
+            name: this.state.name,
+            course: this.state.course
+        }
+
+        if (this.state.id === "_add") {
+            UserService.createStudent(student).then(res => {
+                this.props.history.push("/");
+            });
+        }
+    }
+
+
+    cancelButton() {
+        this.props.history.push("/");
+    }
+
     render() {
         return (
             <div>
@@ -60,21 +77,24 @@ class CreateStudent extends Component {
                             <div className="card-body">
                                 <form>
                                     {/* INPUT NAME */}
-                                    <div class="form-group">
-                                        <label for="exampleInpuName">Name</label>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInpuName">Name</label>
                                         <input placeholder="First Name" name="name" className="form-control"
-                                            value={this.state.firstName} onChange={this.changeNameHolder} />
-                                        <small class="form-text text-muted">Student Name</small>
+                                            value={this.state.name} onChange={this.changeNameHolder} />
+                                        <small className="form-text text-muted">Student Name</small>
                                     </div>
 
                                     {/* INPUT COURSE */}
-                                    <div class="form-group">
-                                        <label for="exampleInputCourse">Course</label>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputCourse">Course</label>
                                         <input placeholder="Course" name="course" className="form-control"
                                             value={this.state.course} onChange={this.changeCourseHandler} />
-                                        <small class="form-text text-muted">Student Name</small>
+                                        <small className="form-text text-muted">Student Course</small>
                                     </div>
 
+
+                                    <button className="btn btn-success" onClick={this.saveOrUpdateButton}>Save</button>
+                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>
                         </div>
