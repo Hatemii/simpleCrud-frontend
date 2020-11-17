@@ -35,16 +35,8 @@ class CreateStudent extends Component {
         this.setState({ course: e.target.value })
     }
 
-    getTitle() {
-        if (this.state.id === '_add') {
-            return <h3 className="text-center">Add Student</h3>
-        } else {
-            return <h3 className="text-center">Update Student</h3>
-        }
-    }
 
-
-    saveOrUpdateButton = (e) => {
+    createStudent = (e) => {
         e.preventDefault();
         let student = {
             name: this.state.name,
@@ -54,12 +46,7 @@ class CreateStudent extends Component {
             UserService.createStudent(student).then(res => {
                 this.props.history.push("/");
             });
-        } else {
-            UserService.updateStudent(this.state.id, student).then(res => {
-                this.props.history.push("/");
-            })
         }
-
     }
 
     cancelButton() {
@@ -73,10 +60,7 @@ class CreateStudent extends Component {
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
-
+                            <h3 className="text-center">Add Student</h3>
                             <div className="card-body">
                                 <form>
                                     {/* INPUT NAME */}
@@ -96,7 +80,7 @@ class CreateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateButton}>Save</button>
+                                    <button className="btn btn-success" onClick={this.createStudent}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>

@@ -13,15 +13,11 @@ class UpdateStudent extends Component {
         }
 
 
-        this.changeNameHandler = this.changeNameHandler.bind(this);
-        this.changeCourseHandler = this.changeCourseHandler.bind(this);
-        this.updateStudent = this.updateStudent.bind(this);
     }
 
     componentDidMount() {
-        UserService.updateStudent(this.state.id).then(res => {
+        UserService.getStudentById(this.state.id).then(res => {
             let student = res.data;
-
             this.setState({
                 name: student.name,
                 course: student.course
@@ -29,21 +25,17 @@ class UpdateStudent extends Component {
         });
     }
 
-    updateStudent = (e) => {
+    updateStudents = (e) => {
         e.preventDefault();
         let student = {
             name: this.state.name,
             course: this.state.course
         }
-        console.log('employee => ' + JSON.stringify(student));
-
 
         UserService.updateStudent(this.state.id, student).then(res => {
             this.props.history.push("/");
-        });
+        })
     }
-
-
 
     changeNameHandler = (e) => {
         this.setState({ name: e.target.value });
@@ -54,16 +46,18 @@ class UpdateStudent extends Component {
     }
 
 
+    cancelButton() {
+        this.props.history.push("/");
+    }
+
     render() {
         return (
             <div>
                 <br></br>
-                <h3 className="text-center">Update Employee</h3>
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-
-
+                            <h3 className="text-center">Update Employee</h3>
                             <div className="card-body">
                                 <form>
                                     {/* INPUT NAME */}
@@ -83,13 +77,14 @@ class UpdateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.updateStudent}>Save</button>
+                                    <button className="btn btn-success" onClick={this.updateStudents}>Save Changes</button>
+                                    <button className="btn btn-danger" style={{ marginLeft: "5px" }} onClick={this.cancelButton.bind(this)}>Cancel</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }

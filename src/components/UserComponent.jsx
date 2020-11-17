@@ -9,10 +9,6 @@ class UserComponent extends React.Component {
         this.state = {
             students: []
         }
-
-        this.deleteById = this.deleteById.bind(this);
-        this.addStundent = this.addStundent.bind(this);
-        this.editStudent = this.editStudent.bind(this);
     }
 
 
@@ -40,10 +36,6 @@ class UserComponent extends React.Component {
         this.props.history.push("/add-student/_add")
     }
 
-    editStudent(id) {
-        this.props.history.push(`/add-student/${id}`)
-    }
-
     render() {
         return (
             <div>
@@ -60,12 +52,12 @@ class UserComponent extends React.Component {
                     className="btn btn-success">Add New Student</button>
 
 
-                <table className="table table-hover table-dark">
+                <table className="table table-hover table-striped table-dark ">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Course</th>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>COURSE</th>
 
                         </tr>
                     </thead>
@@ -94,14 +86,7 @@ class UserComponent extends React.Component {
                                                 className="btn btn-danger">Delete</button>
 
 
-                                            {/* UPDATE STUDENT */}
-                                            <button
-                                                style={{
-                                                    marginLeft: "10px",
-                                                    fontWeight: "bold"
-                                                }}
-                                                onClick={() => this.editStudent(student.id)}
-                                                className="btn btn-info">Update</button>
+
 
 
                                             {/* VIEW STUDENT */}

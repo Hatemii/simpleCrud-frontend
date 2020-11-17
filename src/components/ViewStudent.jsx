@@ -9,12 +9,18 @@ class ViewStudent extends Component {
             id: this.props.match.params.id,
             student: {}
         }
+
+        this.editStudent = this.editStudent.bind(this);
     }
 
     componentDidMount() {
         UserService.getStudentById(this.state.id).then(res => {
             this.setState({ student: res.data });
         })
+    }
+
+    editStudent(id) {
+        this.props.history.push(`/update-student/${id}`)
     }
 
     render() {
@@ -37,8 +43,17 @@ class ViewStudent extends Component {
                             <label> Student Course: </label>
                             <div> {this.state.student.course}</div>
                         </div>
+
+                        {/* UPDATE STUDENT */}
+                        <button
+                            style={{ float: "right", fontWeight: "bold" }}
+                            onClick={() => this.editStudent(this.state.id)}
+                            className="btn btn-info">Update</button>
                     </div>
                 </div>
+
+
+
             </div>
         )
     }

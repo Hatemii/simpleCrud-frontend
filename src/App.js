@@ -20,7 +20,7 @@ function App() {
             <Route path="/students" component={UserComponent}></Route>
             <Route path="/view-student/:id" component={ViewStudent}></Route>
             <Route path="/add-student/:id" component={CreateStudent}></Route>
-            {/* <Route path="/update-student/:id" component={UpdateStudent}></Route> */}
+            <Route path="/update-student/:id" component={UpdateStudent}></Route>
           </Switch>
 
         </div>
