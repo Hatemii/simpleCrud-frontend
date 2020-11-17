@@ -32,11 +32,26 @@ class UserComponent extends React.Component {
         this.props.history.push(`/view-student/${id}`);
     }
 
+    addStundent() {
+        this.props.history.push("/add-student/_add")
+    }
+
 
     render() {
         return (
             <div>
                 <h1 className="text-center">Students List</h1>
+
+                {/* ADD NEW STUDENT BUTTON*/}
+                <button
+                    style={{
+                        float: "right",
+                        marginBottom: "20px"
+                    }}
+                    onClick={() => this.addStundent()}
+                    className="btn btn-success">Add New Student</button>
+
+
                 <table class="table table-hover table-dark">
                     <thead>
                         <tr>
@@ -58,6 +73,7 @@ class UserComponent extends React.Component {
                                         <td>{student.course}</td>
 
                                         <td>
+                                            {/* DELETE BY ID*/}
                                             <button
                                                 style={{ marginLeft: "10px" }}
                                                 onClick={() => {
@@ -66,6 +82,7 @@ class UserComponent extends React.Component {
                                                 }}
                                                 className="btn btn-danger">Delete</button>
 
+                                            {/* VIEW STUDENT */}
                                             <button
                                                 style={{ marginLeft: "10px" }}
                                                 onClick={() => this.viewStudent(student.id)}

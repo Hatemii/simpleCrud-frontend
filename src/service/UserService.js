@@ -16,7 +16,7 @@ class UserService {
         return axios.get(Students_Rest_Api + '/' + id);
     }
 
-    insert(student) {
+    createStudent(student) {
         return axios.post(Students_Rest_Api, student);
     }
 }
