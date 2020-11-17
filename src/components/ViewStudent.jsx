@@ -21,8 +21,9 @@ class ViewStudent extends Component {
         return (
             <div>
                 <br></br>
+                <h3 className="text-center"> View Student Details</h3>
+
                 <div className="card col-md-6 offset-md-3">
-                    <h3 className="text-center"> View Student Details</h3>
                     <div className="card-body">
                         <div className="row">
                             <label> Student Id: </label>
@@ -37,7 +38,6 @@ class ViewStudent extends Component {
                             <div> {this.state.student.course}</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         )

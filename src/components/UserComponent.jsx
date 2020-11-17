@@ -11,9 +11,8 @@ class UserComponent extends React.Component {
         }
 
         this.deleteById = this.deleteById.bind(this);
-        this.viewStudent = this.viewStudent.bind(this);
         this.addStundent = this.addStundent.bind(this);
-
+        this.editStudent = this.editStudent.bind(this);
     }
 
 
@@ -34,13 +33,16 @@ class UserComponent extends React.Component {
     }
 
     viewStudent(id) {
-        this.props.history.push(`/view-student/${id}`);
+        this.props.history.push(`/view-student/${id}`)
     }
 
     addStundent() {
         this.props.history.push("/add-student/_add")
     }
 
+    editStudent(id) {
+        this.props.history.push(`/add-student/${id}`)
+    }
 
     render() {
         return (
@@ -51,7 +53,8 @@ class UserComponent extends React.Component {
                 <button
                     style={{
                         float: "right",
-                        marginBottom: "20px"
+                        marginBottom: "20px",
+                        fontWeight: "bold"
                     }}
                     onClick={() => this.addStundent()}
                     className="btn btn-success">Add New Student</button>
@@ -80,16 +83,33 @@ class UserComponent extends React.Component {
                                         <td>
                                             {/* DELETE BY ID*/}
                                             <button
-                                                style={{ marginLeft: "10px" }}
+                                                style={{
+                                                    marginLeft: "10px",
+                                                    fontWeight: "bold"
+                                                }}
                                                 onClick={() => {
                                                     if (window.confirm('Are you sure you wish to delete this item?'))
                                                         this.deleteById(student.id)
                                                 }}
                                                 className="btn btn-danger">Delete</button>
 
+
+                                            {/* UPDATE STUDENT */}
+                                            <button
+                                                style={{
+                                                    marginLeft: "10px",
+                                                    fontWeight: "bold"
+                                                }}
+                                                onClick={() => this.editStudent(student.id)}
+                                                className="btn btn-info">Update</button>
+
+
                                             {/* VIEW STUDENT */}
                                             <button
-                                                style={{ marginLeft: "10px" }}
+                                                style={{
+                                                    marginLeft: "10px",
+                                                    fontWeight: "bold"
+                                                }}
                                                 onClick={() => this.viewStudent(student.id)}
                                                 className="btn btn-info">View</button>
                                         </td>

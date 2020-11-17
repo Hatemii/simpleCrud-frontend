@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import UserService from "../service/UserService"
+import UserService from "../service/UserService";
 
-class CreateStudent extends Component {
+
+class UpdateStudent extends Component {
     constructor(props) {
         super(props);
 
@@ -11,71 +12,57 @@ class CreateStudent extends Component {
             course: ""
         }
 
+
+        this.changeNameHandler = this.changeNameHandler.bind(this);
+        this.changeCourseHandler = this.changeCourseHandler.bind(this);
+        this.updateStudent = this.updateStudent.bind(this);
     }
 
     componentDidMount() {
-        if (this.state.id === "_add") {
-            return
-        } else {
-            UserService.getStudentById(this.state.id).then(res => {
-                let student = res.data;
-                this.setState({
-                    name: student.name,
-                    course: student.course
-                });
+        UserService.updateStudent(this.state.id).then(res => {
+            let student = res.data;
+
+            this.setState({
+                name: student.name,
+                course: student.course
             });
-        }
+        });
     }
 
-    changeNameHolder = (e) => {
-        this.setState({ name: e.target.value })
-    }
-
-    changeCourseHandler = (e) => {
-        this.setState({ course: e.target.value })
-    }
-
-    getTitle() {
-        if (this.state.id === '_add') {
-            return <h3 className="text-center">Add Student</h3>
-        } else {
-            return <h3 className="text-center">Update Student</h3>
-        }
-    }
-
-
-    saveOrUpdateButton = (e) => {
+    updateStudent = (e) => {
         e.preventDefault();
         let student = {
             name: this.state.name,
             course: this.state.course
         }
-        if (this.state.id === '_add') {
-            UserService.createStudent(student).then(res => {
-                this.props.history.push("/");
-            });
-        } else {
-            UserService.updateStudent(this.state.id, student).then(res => {
-                this.props.history.push("/");
-            })
-        }
+        console.log('employee => ' + JSON.stringify(student));
 
+
+        UserService.updateStudent(this.state.id, student).then(res => {
+            this.props.history.push("/");
+        });
     }
 
-    cancelButton() {
-        this.props.history.push("/");
+
+
+    changeNameHandler = (e) => {
+        this.setState({ name: e.target.value });
     }
+
+    changeCourseHandler = (e) => {
+        this.setState({ course: e.target.value });
+    }
+
 
     render() {
         return (
             <div>
                 <br></br>
+                <h3 className="text-center">Update Employee</h3>
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+
 
                             <div className="card-body">
                                 <form>
@@ -83,7 +70,7 @@ class CreateStudent extends Component {
                                     <div className="form-group">
                                         <label htmlFor="exampleInpuName">Name</label>
                                         <input placeholder="First Name" name="name" className="form-control"
-                                            value={this.state.name} onChange={this.changeNameHolder} />
+                                            value={this.state.name} onChange={this.changeNameHandler} />
                                         <small className="form-text text-muted">Student Name</small>
                                     </div>
 
@@ -96,8 +83,7 @@ class CreateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateButton}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                    <button className="btn btn-success" onClick={this.updateStudent}>Save</button>
                                 </form>
                             </div>
                         </div>
@@ -107,6 +93,4 @@ class CreateStudent extends Component {
         );
     }
 }
-
-
-export default CreateStudent
+export default UpdateStudent;

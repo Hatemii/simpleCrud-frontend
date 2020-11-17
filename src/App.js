@@ -5,6 +5,7 @@ import HeaderComponent from "./components/HeaderComponent"
 import FooterComponent from "./components/FooterComponent"
 import ViewStudent from "./components/ViewStudent"
 import CreateStudent from "./components/CreateStudent"
+import UpdateStudent from './components/UpdateStudent';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/students" component={UserComponent}></Route>
             <Route path="/view-student/:id" component={ViewStudent}></Route>
             <Route path="/add-student/:id" component={CreateStudent}></Route>
+            {/* <Route path="/update-student/:id" component={UpdateStudent}></Route> */}
           </Switch>
 
         </div>

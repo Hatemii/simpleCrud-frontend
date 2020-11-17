@@ -24,7 +24,7 @@ class UserService {
     }
 
     updateStudent(id, student) {
-        return axios.put(Students_Rest_Api + "/" + id, student);
+        return axios.put(Students_Rest_Api + `/update/${id}`, student);
     }
 }
 
