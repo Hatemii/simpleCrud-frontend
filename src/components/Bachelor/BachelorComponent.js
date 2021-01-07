@@ -1,5 +1,5 @@
 import React from "react";
-import UserService from "../../service/StudentService"
+import BachelorService from "../../service/BachelorService"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdCreateNewFolder } from "react-icons/md";
 
@@ -8,61 +8,60 @@ class StudentComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            students: []
+            bachelorFields: []
         }
     }
 
 
     componentDidMount() {
-        UserService.getAllStudents().then(response => {
+        BachelorService.getAllStudyFields().then(response => {
             this.setState({
-                students: response.data
+                bachelorFields: response.data
             })
         });
     }
 
-    deleteById = (id) => {
-        UserService.deleteById(id).then(response => {
+    deletetStudyFieldById = (id) => {
+        BachelorService.deletetStudyFieldById(id).then(response => {
             this.setState({
-                students: this.state.students.filter(student => student.id !== id)
+                bachelorFields: this.state.bachelorFields.filter(field => field.id !== id)
             });
         });
     }
 
-    viewStudent(id) {
-        this.props.history.push(`/view-student/${id}`)
+    getStudyFieldById(id) {
+        this.props.history.push(`/view-bachelorField/${id}`)
     }
 
-    addStundent() {
-        this.props.history.push("/add-student/_add")
+    insertStudyField() {
+        this.props.history.push("/add-bachelorField/_add")
     }
 
     render() {
         return (
             <div>
-                <h1 className="text-center">Students List</h1>
+                <h1 className="text-center">Bachelor Study Fields 2020/2021</h1>
                 <hr />
 
-
-                {/* ADD NEW STUDENT BUTTON*/}
+                {/* ADD NEW STUDY FIELD BUTTON*/}
                 <button
                     style={{
                         float: "right",
                         marginBottom: "20px",
                         fontWeight: "bold"
                     }}
-                    onClick={() => this.addStundent()}
+                    onClick={() => this.insertStudyField()}
                     className="btn btn-success">Add new <MdCreateNewFolder size={18} /></button>
 
 
                 <table className="table table-hover table-striped table-dark ">
                     <thead style={{ textAlign: "center" }}>
                         <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>SURNAME</th>
-                            <th>FIELD</th>
                             <th>SEMESTER</th>
+                            <th>TECHNOLOGY</th>
+                            <th>INDUSTRIAL</th>
+                            <th>BUSINESS</th>
+                            <th>POLITICAL</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
@@ -70,24 +69,24 @@ class StudentComponent extends React.Component {
 
                     <tbody style={{ textAlign: "center" }}>
                         {
-                            this.state.students.map(
-                                student =>
-                                    <tr key={student.id}>
-                                        <td>{student.id}</td>
-                                        <td>{student.name}</td>
-                                        <td>{student.surname}</td>
-                                        <td>{student.field}</td>
-                                        <td>{student.semester}</td>
+                            this.state.bachelorFields.map(
+                                item =>
+                                    <tr key={item.semester}>
+                                        <td>{item.semester}</td>
+                                        <td>{item.technology}</td>
+                                        <td>{item.industrial}</td>
+                                        <td>{item.business}</td>
+                                        <td>{item.political}</td>
 
 
                                         <td>
-                                            {/* VIEW STUDENT */}
+                                            {/* VIEW FIELD */}
                                             <button
                                                 style={{
                                                     marginLeft: "10px",
                                                     fontWeight: "bold"
                                                 }}
-                                                onClick={() => this.viewStudent(student.id)}
+                                                onClick={() => this.getStudyFieldById(item.id)}
                                                 className="btn btn-info">Details</button>
 
 
@@ -99,7 +98,7 @@ class StudentComponent extends React.Component {
                                                 }}
                                                 onClick={() => {
                                                     if (window.confirm('Are you sure that you want to delete this?'))
-                                                        this.deleteById(student.id)
+                                                        this.deletetStudyFieldById(item.id)
                                                 }}
                                                 className="btn btn-danger"><FaTrashAlt size={15} /></button>
                                         </td>
