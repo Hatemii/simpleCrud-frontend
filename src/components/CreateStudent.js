@@ -8,7 +8,9 @@ class CreateStudent extends Component {
         this.state = {
             id: this.props.match.params.id,
             name: "",
-            course: ""
+            surname: "",
+            field: "",
+            semester: ""
         }
 
     }
@@ -21,7 +23,9 @@ class CreateStudent extends Component {
                 let student = res.data;
                 this.setState({
                     name: student.name,
-                    course: student.course
+                    surname: student.surname,
+                    field: student.field,
+                    semester: student.semester
                 });
             });
         }
@@ -31,8 +35,16 @@ class CreateStudent extends Component {
         this.setState({ name: e.target.value })
     }
 
-    changeCourseHandler = (e) => {
-        this.setState({ course: e.target.value })
+    changeSurnameHandler = (e) => {
+        this.setState({ surname: e.target.value })
+    }
+
+    changeFieldHandler = (e) => {
+        this.setState({ field: e.target.value })
+    }
+
+    changeSemesterHandler = (e) => {
+        this.setState({ semester: e.target.value })
     }
 
 
@@ -40,7 +52,9 @@ class CreateStudent extends Component {
         e.preventDefault();
         let student = {
             name: this.state.name,
-            course: this.state.course
+            surname: this.state.surname,
+            field: this.state.field,
+            semester: this.state.semester
         }
         if (this.state.id === '_add') {
             UserService.createStudent(student).then(res => {
@@ -68,15 +82,27 @@ class CreateStudent extends Component {
                                         <label htmlFor="exampleInpuName">Name</label>
                                         <input placeholder="First Name" name="name" className="form-control"
                                             value={this.state.name} onChange={this.changeNameHolder} />
-                                        <small className="form-text text-muted">Student Name</small>
                                     </div>
 
-                                    {/* INPUT COURSE */}
+                                    {/* INPUT SURNAME */}
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputCourse">Course</label>
-                                        <input placeholder="Course" name="course" className="form-control"
-                                            value={this.state.course} onChange={this.changeCourseHandler} />
-                                        <small className="form-text text-muted">Student Course</small>
+                                        <label htmlFor="exampleInputSurname">Surname</label>
+                                        <input placeholder="Surname" name="surname" className="form-control"
+                                            value={this.state.surname} onChange={this.changeSurnameHandler} />
+                                    </div>
+
+                                    {/* INPUT FIELD */}
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputField">Field</label>
+                                        <input placeholder="Field of study" name="field" className="form-control"
+                                            value={this.state.field} onChange={this.changeFieldHandler} />
+                                    </div>
+
+                                    {/* INPUT SEMESTER */}
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputSemester">Semester</label>
+                                        <input placeholder="Semester" name="semester" className="form-control"
+                                            value={this.state.semester} onChange={this.changeSemesterHandler} />
                                     </div>
 
 

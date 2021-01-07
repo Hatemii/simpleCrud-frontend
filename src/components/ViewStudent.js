@@ -40,15 +40,22 @@ class ViewStudent extends Component {
                             <div>  {this.state.student.name}</div>
                         </div>
                         <div className="row">
-                            <label> Student Course: </label>
-                            <div> {this.state.student.course}</div>
+                            <label> Student Surname: </label>
+                            <div> {this.state.student.surname}</div>
                         </div>
-
+                        <div className="row">
+                            <label> Student Field: </label>
+                            <div> {this.state.student.field}</div>
+                        </div>
+                        <div className="row">
+                            <label> Student Semester: </label>
+                            <div> {this.state.student.semester}</div>
+                        </div>
                         {/* UPDATE STUDENT */}
                         <button
                             style={{ float: "right", fontWeight: "bold" }}
                             onClick={() => this.editStudent(this.state.id)}
-                            className="btn btn-info">Update</button>
+                            className="btn btn-primary">Update</button>
                     </div>
                 </div>
 

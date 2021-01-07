@@ -1,6 +1,7 @@
 import React from "react";
 import UserService from "../service/UserService";
-
+import { FaTrashAlt } from "react-icons/fa";
+import { MdCreateNewFolder } from "react-icons/md";
 
 class UserComponent extends React.Component {
 
@@ -49,46 +50,35 @@ class UserComponent extends React.Component {
                         fontWeight: "bold"
                     }}
                     onClick={() => this.addStundent()}
-                    className="btn btn-success">Add New Student</button>
+                    className="btn btn-success">Add new <MdCreateNewFolder size={18} /></button>
 
 
                 <table className="table table-hover table-striped table-dark ">
-                    <thead>
+                    <thead style={{ textAlign: "center" }}>
                         <tr>
                             <th>ID</th>
                             <th>NAME</th>
-                            <th>COURSE</th>
-
+                            <th>SURNAME</th>
+                            <th>FIELD</th>
+                            <th>SEMESTER</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
 
 
-                    <tbody>
+                    <tbody style={{ textAlign: "center" }}>
                         {
                             this.state.students.map(
                                 student =>
                                     <tr key={student.id}>
                                         <td>{student.id}</td>
                                         <td>{student.name}</td>
-                                        <td>{student.course}</td>
+                                        <td>{student.surname}</td>
+                                        <td>{student.field}</td>
+                                        <td>{student.semester}</td>
+
 
                                         <td>
-                                            {/* DELETE BY ID*/}
-                                            <button
-                                                style={{
-                                                    marginLeft: "10px",
-                                                    fontWeight: "bold"
-                                                }}
-                                                onClick={() => {
-                                                    if (window.confirm('Are you sure you wish to delete this item?'))
-                                                        this.deleteById(student.id)
-                                                }}
-                                                className="btn btn-danger">Delete</button>
-
-
-
-
-
                                             {/* VIEW STUDENT */}
                                             <button
                                                 style={{
@@ -96,7 +86,20 @@ class UserComponent extends React.Component {
                                                     fontWeight: "bold"
                                                 }}
                                                 onClick={() => this.viewStudent(student.id)}
-                                                className="btn btn-info">View</button>
+                                                className="btn btn-info">Details</button>
+
+
+                                            {/* DELETE BY ID*/}
+                                            <button
+                                                style={{
+                                                    marginLeft: "10px",
+                                                    fontWeight: "bold"
+                                                }}
+                                                onClick={() => {
+                                                    if (window.confirm('Are you sure that you want to delete this?'))
+                                                        this.deleteById(student.id)
+                                                }}
+                                                className="btn btn-danger"><FaTrashAlt size={15} /></button>
                                         </td>
                                     </tr>
                             )
