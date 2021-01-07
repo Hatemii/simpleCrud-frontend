@@ -5,7 +5,7 @@ const Students_Rest_Api = "http://localhost:8080/students";
 
 
 
-class UserService {
+class StudentService {
 
     getAllStudents() {
         return axios.get(Students_Rest_Api);
@@ -28,4 +28,4 @@ class UserService {
     }
 }
 
-export default new UserService();
+export default new StudentService();

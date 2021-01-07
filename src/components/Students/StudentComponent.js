@@ -1,9 +1,9 @@
 import React from "react";
-import UserService from "../service/UserService";
+import UserService from "../../service/StudentService"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdCreateNewFolder } from "react-icons/md";
 
-class UserComponent extends React.Component {
+class StudentComponent extends React.Component {
 
     constructor(props) {
         super(props)
@@ -112,4 +112,4 @@ class UserComponent extends React.Component {
 
 }
 
-export default UserComponent;
+export default StudentComponent;

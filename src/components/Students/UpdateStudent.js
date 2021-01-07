@@ -1,7 +1,9 @@
 import React, { Component } from "react"
-import UserService from "../service/UserService"
+import UserService from "../../service/StudentService"
+import { FaSave } from "react-icons/fa";
+import { MdCancel, MdLocalGasStation } from "react-icons/md";
 
-class CreateStudent extends Component {
+class UpdateStudent extends Component {
     constructor(props) {
         super(props);
 
@@ -12,43 +14,40 @@ class CreateStudent extends Component {
             field: "",
             semester: ""
         }
-
     }
 
     componentDidMount() {
-        if (this.state.id === "_add") {
-            return
-        } else {
-            UserService.getStudentById(this.state.id).then(res => {
-                let student = res.data;
-                this.setState({
-                    name: student.name,
-                    surname: student.surname,
-                    field: student.field,
-                    semester: student.semester
-                });
+        UserService.getStudentById(this.state.id).then(res => {
+            let student = res.data;
+            this.setState({
+                name: student.name,
+                surname: student.surname,
+                field: student.field,
+                semester: student.semester
             });
-        }
+        });
     }
 
-    changeNameHolder = (e) => {
-        this.setState({ name: e.target.value })
+    changeNameHandler = (e) => {
+        this.setState({ name: e.target.value });
     }
 
     changeSurnameHandler = (e) => {
-        this.setState({ surname: e.target.value })
+        this.setState({ surname: e.target.value });
     }
 
     changeFieldHandler = (e) => {
-        this.setState({ field: e.target.value })
+        this.setState({ field: e.target.value });
     }
 
     changeSemesterHandler = (e) => {
-        this.setState({ semester: e.target.value })
+        this.setState({
+            semester: e.target.value
+        })
     }
 
 
-    createStudent = (e) => {
+    updateStudents = (e) => {
         e.preventDefault();
         let student = {
             name: this.state.name,
@@ -56,32 +55,35 @@ class CreateStudent extends Component {
             field: this.state.field,
             semester: this.state.semester
         }
-        if (this.state.id === '_add') {
-            UserService.createStudent(student).then(res => {
-                this.props.history.push("/");
-            });
-        }
+
+        UserService.updateStudent(this.state.id, student).then(res => {
+            this.props.history.push("/");
+        })
     }
+
 
     cancelButton() {
         this.props.history.push("/");
     }
 
     render() {
+
+        console.log(this.state.semester);
+
         return (
             <div>
                 <br></br>
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Add Student</h3>
+                            <h3 className="text-center">Update Student</h3>
                             <div className="card-body">
                                 <form>
                                     {/* INPUT NAME */}
                                     <div className="form-group">
                                         <label htmlFor="exampleInpuName">Name</label>
                                         <input placeholder="First Name" name="name" className="form-control"
-                                            value={this.state.name} onChange={this.changeNameHolder} />
+                                            value={this.state.name} onChange={this.changeNameHandler} />
                                     </div>
 
                                     {/* INPUT SURNAME */}
@@ -106,17 +108,15 @@ class CreateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.createStudent}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                    <button className="btn btn-success" onClick={this.updateStudents}>Save <FaSave size={15} /></button>
+                                    <button className="btn btn-danger" style={{ marginLeft: "5px" }} onClick={this.cancelButton.bind(this)}>Cancel <MdCancel size={15} /></button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
-
-
-export default CreateStudent
+export default UpdateStudent;
