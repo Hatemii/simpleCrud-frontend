@@ -43,7 +43,6 @@ class StudentComponent extends React.Component {
                 <h1 className="text-center">Students List</h1>
                 <hr />
 
-
                 {/* ADD NEW STUDENT BUTTON*/}
                 <button
                     style={{
