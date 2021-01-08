@@ -26,7 +26,7 @@ export default class App extends Component {
               <Route path="/update-student/:id" component={UpdateStudent}></Route>
 
               <Route path="/bachelor" exact component={BachelorComponent}></Route>
-              <Route path="/add-bachelorField/_add" component={CreateBachelorStudyField}></Route>
+              <Route path="/add-bachelorField/:id" component={CreateBachelorStudyField}></Route>
 
 
             </Switch>

@@ -71,8 +71,8 @@ class StudentComponent extends React.Component {
                         {
                             this.state.bachelorFields.map(
                                 item =>
-                                    <tr key={item.semester}>
-                                        <td>{item.semester}</td>
+                                    <tr key={item.id}>
+                                        <td>{item.id}</td>
                                         <td>{item.technology}</td>
                                         <td>{item.industrial}</td>
                                         <td>{item.business}</td>

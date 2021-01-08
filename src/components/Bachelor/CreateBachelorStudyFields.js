@@ -6,7 +6,7 @@ class CreateBachelorStudyField extends Component {
         super(props);
 
         this.state = {
-            // id: this.props.match.params.semester,
+            id: this.props.match.params.id,
             technology: "",
             industrial: "",
             business: "",
@@ -15,21 +15,21 @@ class CreateBachelorStudyField extends Component {
 
     }
 
-    // componentDidMount() {
-    //     if (this.state.id === "_addBachelor") {
-    //         return
-    //     } else {
-    //         BachelorService.getStudyFieldById(this.state.id).then(res => {
-    //             let field = res.data;
-    //             this.setState({
-    //                 technology: field.technology,
-    //                 industrial: field.industrial,
-    //                 business: field.business,
-    //                 political: field.political
-    //             });
-    //         });
-    //     }
-    // }
+    componentDidMount() {
+        if (this.state.id === "_add") {
+            return
+        } else {
+            BachelorService.getStudyFieldById(this.state.id).then(res => {
+                let field = res.data;
+                this.setState({
+                    technology: field.technology,
+                    industrial: field.industrial,
+                    business: field.business,
+                    political: field.political
+                });
+            });
+        }
+    }
 
     createTechnologyField = (e) => {
         this.setState({ technology: e.target.value })
@@ -56,9 +56,9 @@ class CreateBachelorStudyField extends Component {
             business: this.state.business,
             political: this.state.political
         }
-        if (this.state.id === '_addBachelor') {
+        if (this.state.id === '_add') {
             BachelorService.insertStudyField(field).then(res => {
-                this.props.history.push("/");
+                this.props.history.push("/bachelor");
             });
         }
     }
@@ -78,36 +78,36 @@ class CreateBachelorStudyField extends Component {
                             <div className="card-body">
                                 <form>
 
-                                    {/* INPUT NAME */}
+                                    {/* INPUT TECHNOLOGY */}
                                     <div className="form-group">
-                                        <label htmlFor="exampleInpuName">Name</label>
-                                        <input placeholder="First Name" name="name" className="form-control"
-                                            value={this.state.name} onChange={this.changeNameHolder} />
+                                        <label htmlFor="exampleInputTechnology">Technology</label>
+                                        <input placeholder="Technology Field" name="technology" className="form-control"
+                                            value={this.state.technology} onChange={this.createTechnologyField} />
                                     </div>
 
-                                    {/* INPUT SURNAME */}
+                                    {/* INPUT INDUSTRIAL */}
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputSurname">Surname</label>
-                                        <input placeholder="Surname" name="surname" className="form-control"
-                                            value={this.state.surname} onChange={this.changeSurnameHandler} />
+                                        <label htmlFor="exampleInputIndustrial">Industrial</label>
+                                        <input placeholder="Industrial Field" name="industrial" className="form-control"
+                                            value={this.state.industrial} onChange={this.createIndustrialField} />
                                     </div>
 
-                                    {/* INPUT FIELD */}
+                                    {/* INPUT BUSINESS */}
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputField">Field</label>
-                                        <input placeholder="Field of study" name="field" className="form-control"
-                                            value={this.state.field} onChange={this.changeFieldHandler} />
+                                        <label htmlFor="exampleInputBuissines">Business</label>
+                                        <input placeholder="Business Field" name="business" className="form-control"
+                                            value={this.state.business} onChange={this.createBusinessField} />
                                     </div>
 
-                                    {/* INPUT SEMESTER */}
+                                    {/* INPUT POLITICAL */}
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputSemester">Semester</label>
-                                        <input placeholder="Semester" name="semester" className="form-control"
-                                            value={this.state.semester} onChange={this.changeSemesterHandler} />
+                                        <label htmlFor="exampleInputPolitical">Political</label>
+                                        <input placeholder="Political Field" name="political" className="form-control"
+                                            value={this.state.political} onChange={this.createPoliticalField} />
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.createStudent}>Save</button>
+                                    <button className="btn btn-success" onClick={this.createFields}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>
