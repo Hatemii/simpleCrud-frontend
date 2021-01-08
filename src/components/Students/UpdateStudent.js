@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import UserService from "../../service/StudentService"
 import { FaSave } from "react-icons/fa";
-import { MdCancel, MdLocalGasStation } from "react-icons/md";
+import { MdCancel } from "react-icons/md";
 
 class UpdateStudent extends Component {
     constructor(props) {

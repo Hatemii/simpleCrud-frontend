@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 import UserService from "../../service/StudentService"
+import { FaSave } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
+
 
 class CreateStudent extends Component {
     constructor(props) {
@@ -106,8 +109,8 @@ class CreateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.createStudent}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                    <button className="btn btn-success" onClick={this.createStudent}>Save <FaSave size={15} /> </button>
+                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /></button>
                                 </form>
                             </div>
                         </div>

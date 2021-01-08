@@ -2,8 +2,9 @@ import React from "react";
 import BachelorService from "../../service/BachelorService"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdCreateNewFolder } from "react-icons/md";
+import { RiEdit2Fill } from "react-icons/ri";
 
-class StudentComponent extends React.Component {
+class BachelorComponent extends React.Component {
 
     constructor(props) {
         super(props)
@@ -11,7 +12,6 @@ class StudentComponent extends React.Component {
             bachelorFields: []
         }
     }
-
 
     componentDidMount() {
         BachelorService.getAllStudyFields().then(response => {
@@ -29,12 +29,12 @@ class StudentComponent extends React.Component {
         });
     }
 
-    getStudyFieldById(id) {
-        this.props.history.push(`/view-bachelorField/${id}`)
-    }
-
     insertStudyField() {
         this.props.history.push("/add-bachelorField/_add")
+    }
+
+    editStudyField(id) {
+        this.props.history.push(`/update-study-field/${id}`)
     }
 
     render() {
@@ -80,37 +80,32 @@ class StudentComponent extends React.Component {
 
 
                                         <td>
-                                            {/* VIEW FIELD */}
+
+                                            {/* UPDATE FIELD */}
                                             <button
-                                                style={{
-                                                    marginLeft: "10px",
-                                                    fontWeight: "bold"
-                                                }}
-                                                onClick={() => this.getStudyFieldById(item.id)}
-                                                className="btn btn-info">Details</button>
+                                                style={{ fontWeight: "bold" }}
+                                                onClick={() => this.editStudyField(item.id)}
+                                                className="btn btn-primary"><RiEdit2Fill size={17} /></button>
 
 
                                             {/* DELETE BY ID*/}
                                             <button
-                                                style={{
-                                                    marginLeft: "10px",
-                                                    fontWeight: "bold"
-                                                }}
+                                                style={{ marginLeft: "10px", fontWeight: "bold" }}
                                                 onClick={() => {
                                                     if (window.confirm('Are you sure that you want to delete this?'))
                                                         this.deletetStudyFieldById(item.id)
                                                 }}
-                                                className="btn btn-danger"><FaTrashAlt size={15} /></button>
+                                                className="btn btn-danger"><FaTrashAlt size={16} /></button>
                                         </td>
                                     </tr>
                             )
                         }
                     </tbody>
                 </table>
-            </div>
+            </div >
         )
     }
 
 }
 
-export default StudentComponent;
+export default BachelorComponent;

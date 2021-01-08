@@ -2,6 +2,7 @@ import React from "react";
 import UserService from "../../service/StudentService"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdCreateNewFolder } from "react-icons/md";
+import { RiEdit2Fill } from "react-icons/ri";
 
 class StudentComponent extends React.Component {
 
@@ -33,14 +34,18 @@ class StudentComponent extends React.Component {
         this.props.history.push(`/view-student/${id}`)
     }
 
-    addStundent() {
+    addStudent() {
         this.props.history.push("/add-student/_add")
+    }
+
+    editStudent(id) {
+        this.props.history.push(`/update-student/${id}`)
     }
 
     render() {
         return (
             <div>
-                <h1 className="text-center">Students List</h1>
+                <h1 className="text-center">Student Lists 2020/2021</h1>
                 <hr />
 
                 {/* ADD NEW STUDENT BUTTON*/}
@@ -50,7 +55,7 @@ class StudentComponent extends React.Component {
                         marginBottom: "20px",
                         fontWeight: "bold"
                     }}
-                    onClick={() => this.addStundent()}
+                    onClick={() => this.addStudent()}
                     className="btn btn-success">Add new <MdCreateNewFolder size={18} /></button>
 
 
@@ -80,15 +85,11 @@ class StudentComponent extends React.Component {
 
 
                                         <td>
-                                            {/* VIEW STUDENT */}
+                                            {/* UPDATE STUDENT */}
                                             <button
-                                                style={{
-                                                    marginLeft: "10px",
-                                                    fontWeight: "bold"
-                                                }}
-                                                onClick={() => this.viewStudent(student.id)}
-                                                className="btn btn-info">Details</button>
-
+                                                style={{ fontWeight: "bold" }}
+                                                onClick={() => this.editStudent(student.id)}
+                                                className="btn btn-primary"><RiEdit2Fill size={17} /></button>
 
                                             {/* DELETE BY ID*/}
                                             <button
@@ -100,7 +101,7 @@ class StudentComponent extends React.Component {
                                                     if (window.confirm('Are you sure that you want to delete this?'))
                                                         this.deleteById(student.id)
                                                 }}
-                                                className="btn btn-danger"><FaTrashAlt size={15} /></button>
+                                                className="btn btn-danger"><FaTrashAlt size={16} /></button>
                                         </td>
                                     </tr>
                             )
