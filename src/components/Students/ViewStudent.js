@@ -32,43 +32,44 @@ class ViewStudent extends Component {
     render() {
         return (
             <div>
-                <br></br>
                 <h3 className="text-center"> View Student Details</h3>
                 <hr />
+                <br></br>
+                <br></br>
+
 
                 <h4>Personal Information</h4>
-                <div className="card col-md-6 offset-md-3">
-                    <div className="card-body">
-                        <div className="row">
-                            <label> Student Id: </label>
-                            <div> {this.state.student.id}</div>
-                        </div>
-                        <div className="row">
-                            <label> Student Name: </label>
-                            <div>  {this.state.student.name}</div>
-                        </div>
-                        <div className="row">
-                            <label> Student Surname: </label>
-                            <div> {this.state.student.surname}</div>
-                        </div>
-                        <div className="row">
-                            <label> Student Field: </label>
-                            <div> {this.state.student.field}</div>
-                        </div>
-                        <div className="row">
-                            <label> Student Semester: </label>
-                            <div> {this.state.student.semester}</div>
-                        </div>
+                <div>
+                    <table className="table table-hover table-striped table-white ">
+                        <thead style={{ textAlign: "center" }}>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>SURNAME</th>
+                                <th>FIELD OF STUDY</th>
+                                <th>SEMESTER</th>
+                            </tr>
+                        </thead>
 
-                        {/* UPDATE STUDENT */}
-                        <button
-                            style={{ float: "right", fontWeight: "bold" }}
-                            onClick={() => this.editStudent(this.state.id)}
-                            className="btn btn-primary">Update</button>
-                    </div>
+                        <tbody style={{ textAlign: "center" }}>
+                            <tr>
+                                <td>{this.state.student.id}</td>
+                                <td>{this.state.student.name}</td>
+                                <td>{this.state.student.surname}</td>
+                                <td>{this.state.student.field}</td>
+                                <td>{this.state.student.semester}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div style={{ marginTop: "50px" }}>
+                {/* UPDATE STUDENT */}
+                <button style={{ float: "right", fontWeight: "bold" }}
+                    onClick={() => this.editStudent(this.state.id)}
+                    className="btn btn-primary">Update</button>
+
+
+                <div style={{ marginTop: "80px" }}>
                     <h4>Subjects For This Semester</h4>
                     <table className="table table-hover table-striped table-white ">
                         <thead style={{ textAlign: "center" }}>
@@ -100,8 +101,8 @@ class ViewStudent extends Component {
                 </div>
                 <br />
 
-                <Link to="/" className="btn btn-secondary">Back</Link>
-            </div>
+                <Link to="/" className="btn btn-secondary" style={{ float: "left" }}>Back</Link>
+            </div >
         )
     }
 }

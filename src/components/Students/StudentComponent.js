@@ -38,10 +38,6 @@ class StudentComponent extends React.Component {
         this.props.history.push("/add-student/_add")
     }
 
-    editStudent(id) {
-        this.props.history.push(`/update-student/${id}`)
-    }
-
     render() {
         return (
             <div>
@@ -86,16 +82,10 @@ class StudentComponent extends React.Component {
 
                                         <td>
                                             <button
-                                                onClick={() => this.viewStudent(student.id)}
-                                            >
-                                                View
-                                            </button>
-
-                                            {/* UPDATE STUDENT */}
-                                            <button
                                                 style={{ fontWeight: "bold" }}
-                                                onClick={() => this.editStudent(student.id)}
-                                                className="btn btn-primary"><RiEdit2Fill size={17} /></button>
+                                                onClick={() => this.viewStudent(student.id)}
+                                                className="btn btn-primary">View</button>
+
 
                                             {/* DELETE BY ID*/}
                                             <button
