@@ -101,7 +101,7 @@ class ViewStudent extends Component {
                 </div>
                 <br />
 
-                <Link to="/" className="btn btn-secondary" style={{ float: "left" }}>Back</Link>
+                <Link to="/students" className="btn btn-secondary" style={{ float: "left" }}>Back</Link>
             </div >
         )
     }

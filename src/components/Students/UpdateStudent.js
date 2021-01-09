@@ -63,7 +63,7 @@ class UpdateStudent extends Component {
 
 
     cancelButton() {
-        this.props.history.push("/");
+        this.props.history.push("/students");
     }
 
     render() {

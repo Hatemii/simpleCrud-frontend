@@ -19,10 +19,9 @@ export default class App extends Component {
         <HeaderComponent />
 
         <Router>
+          <Route path="/" exact component={Home}></Route>
+
           <div className="container">
-
-            <Route path="/" exact component={Home}></Route>
-
             <Route path="/students" component={StudentComponent}></Route>
             <Route path="/add-student/:id" component={CreateStudent}></Route>
             <Route path="/view-student/:id" component={ViewStudent}></Route>
