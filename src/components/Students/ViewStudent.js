@@ -88,7 +88,7 @@ class ViewStudent extends Component {
                                     .filter(x => x.id === this.state.student.semester)
                                     .map(
                                         field =>
-                                            <tr>
+                                            <tr key={field.id}>
                                                 <td>{field.technology}</td>
                                                 <td>{field.industrial}</td>
                                                 <td>{field.business}</td>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./Navbar.css"
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -11,13 +12,16 @@ class HeaderComponent extends Component {
 
     render() {
         return (
-            <div>
-                <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                        <div><a href="/" className="navbar-brand">University Management System</a></div>
-                    </nav>
-                </header>
-            </div>
+            <div className="navbar navbar-dark bg-dark">
+                <span><h5>
+                    <a href="/">University Managemnet System</a>
+                </h5></span>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/students">STUDENTS</a></li>
+                    <li><a href="/bachelor">BACHELOR</a></li>
+                </ul>
+            </div >
         )
     }
 }

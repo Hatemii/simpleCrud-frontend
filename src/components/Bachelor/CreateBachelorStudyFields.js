@@ -67,7 +67,7 @@ class CreateBachelorStudyField extends Component {
     }
 
     cancelButton() {
-        this.props.history.push("/");
+        this.props.history.push("/bachelor");
     }
 
     render() {
@@ -77,7 +77,7 @@ class CreateBachelorStudyField extends Component {
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Add New Study Field</h3>
+                            <h3 className="text-center" style={{ marginTop: "30px" }}>Add New Study Field</h3>
                             <div className="card-body">
                                 <form>
 
@@ -110,8 +110,8 @@ class CreateBachelorStudyField extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.createFields}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                    <button className="btn btn-success" onClick={this.createFields}>Save <FaSave /> </button>
+                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel /></button>
                                 </form>
                             </div>
                         </div>

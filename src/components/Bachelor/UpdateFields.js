@@ -69,50 +69,48 @@ class UpdateFields extends Component {
         return (
             <div>
                 <br></br>
-                <div className="conainer">
-                    <div className="row">
-                        <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Update Study Field</h3>
-                            <div className="card-body">
-                                <form>
+                <div className="row">
+                    <div className="card col-md-6 offset-md-3 offset-md-3">
+                        <h3 style={{ marginTop: "20px" }} className="text-center">Update Study Field</h3>
+                        <div className="card-body">
+                            <form>
 
-                                    {/* INPUT TECHNOLOGY */}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputTechnology">Technology</label>
-                                        <input placeholder="Technology Field" name="technology" className="form-control"
-                                            value={this.state.technology} onChange={this.changeTechnologyField} />
-                                    </div>
+                                {/* INPUT TECHNOLOGY */}
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputTechnology">Technology</label>
+                                    <input placeholder="Technology Field" name="technology" className="form-control"
+                                        value={this.state.technology} onChange={this.changeTechnologyField} />
+                                </div>
 
-                                    {/* INPUT INDUSTRIAL */}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputIndustrial">Industrial</label>
-                                        <input placeholder="Industrial Field" name="industrial" className="form-control"
-                                            value={this.state.industrial} onChange={this.changeIndustrialField} />
-                                    </div>
+                                {/* INPUT INDUSTRIAL */}
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputIndustrial">Industrial</label>
+                                    <input placeholder="Industrial Field" name="industrial" className="form-control"
+                                        value={this.state.industrial} onChange={this.changeIndustrialField} />
+                                </div>
 
-                                    {/* INPUT BUSINESS */}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputBuissines">Business</label>
-                                        <input placeholder="Business Field" name="business" className="form-control"
-                                            value={this.state.business} onChange={this.changeBusinessField} />
-                                    </div>
+                                {/* INPUT BUSINESS */}
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputBuissines">Business</label>
+                                    <input placeholder="Business Field" name="business" className="form-control"
+                                        value={this.state.business} onChange={this.changeBusinessField} />
+                                </div>
 
-                                    {/* INPUT POLITICAL */}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputPolitical">Political</label>
-                                        <input placeholder="Political Field" name="political" className="form-control"
-                                            value={this.state.political} onChange={this.changePoliticalField} />
-                                    </div>
+                                {/* INPUT POLITICAL */}
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPolitical">Political</label>
+                                    <input placeholder="Political Field" name="political" className="form-control"
+                                        value={this.state.political} onChange={this.changePoliticalField} />
+                                </div>
 
 
-                                    <button className="btn btn-success" onClick={this.updateStudents}>Save <FaSave size={15} /> </button>
-                                    <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>
-                                </form>
-                            </div>
+                                <button className="btn btn-success" onClick={this.updateStudents}>Save <FaSave size={15} /> </button>
+                                <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }

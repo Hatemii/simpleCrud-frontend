@@ -38,7 +38,7 @@ class BachelorComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Bachelor Study Fields 2020/2021</h1>
+                <h3>Bachelor Study Fields 2020/2021</h3>
                 <hr />
 
                 {/* ADD NEW STUDY FIELD BUTTON*/}
@@ -81,14 +81,13 @@ class BachelorComponent extends React.Component {
 
                                             {/* UPDATE FIELD */}
                                             <button
-                                                style={{ fontWeight: "bold" }}
                                                 onClick={() => this.editStudyField(item.id)}
-                                                className="btn btn-primary"><RiEdit2Fill size={17} /></button>
+                                                className="btn btn-primary"><RiEdit2Fill size={16} /></button>
 
 
                                             {/* DELETE BY ID*/}
                                             <button
-                                                style={{ marginLeft: "10px", fontWeight: "bold" }}
+                                                style={{ marginLeft: "10px" }}
                                                 onClick={() => {
                                                     if (window.confirm('Are you sure that you want to delete this?'))
                                                         this.deletetStudyFieldById(item.id)

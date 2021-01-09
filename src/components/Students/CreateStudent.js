@@ -77,7 +77,7 @@ class CreateStudent extends Component {
                 <div className="conainer">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Add Student</h3>
+                            <h3 className="text-center" style={{ marginTop: "30px" }}>Add Student</h3>
                             <div className="card-body">
                                 <form>
                                     {/* INPUT NAME */}

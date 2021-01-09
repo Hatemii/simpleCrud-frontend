@@ -2,7 +2,6 @@ import React from "react";
 import UserService from "../../service/StudentService"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdCreateNewFolder } from "react-icons/md";
-import { RiEdit2Fill } from "react-icons/ri";
 
 class StudentComponent extends React.Component {
 
@@ -41,7 +40,7 @@ class StudentComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Student Lists 2020/2021</h1>
+                <h3>Student List 2020/2021</h3>
                 <hr />
 
                 {/* ADD NEW STUDENT BUTTON*/}
