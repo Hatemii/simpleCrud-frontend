@@ -85,6 +85,12 @@ class StudentComponent extends React.Component {
 
 
                                         <td>
+                                            <button
+                                                onClick={() => this.viewStudent(student.id)}
+                                            >
+                                                View
+                                            </button>
+
                                             {/* UPDATE STUDENT */}
                                             <button
                                                 style={{ fontWeight: "bold" }}

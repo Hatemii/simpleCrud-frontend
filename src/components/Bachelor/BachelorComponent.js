@@ -15,10 +15,8 @@ class BachelorComponent extends React.Component {
 
     componentDidMount() {
         BachelorService.getAllStudyFields().then(response => {
-            this.setState({
-                bachelorFields: response.data
-            })
-        });
+            this.setState({ bachelorFields: response.data })
+        })
     }
 
     deletetStudyFieldById = (id) => {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import UserService from "../../service/StudentService"
+import BachelorService from "../../service/BachelorService"
+import { Link } from "react-router-dom"
 
 class ViewStudent extends Component {
     constructor(props) {
@@ -7,17 +9,21 @@ class ViewStudent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            student: {}
+            student: {},
+            fields: []
         }
-
-        this.editStudent = this.editStudent.bind(this);
     }
 
     componentDidMount() {
         UserService.getStudentById(this.state.id).then(res => {
             this.setState({ student: res.data });
+        });
+
+        BachelorService.getAllStudyFields().then(res => {
+            this.setState({ fields: res.data });
         })
     }
+
 
     editStudent(id) {
         this.props.history.push(`/update-student/${id}`)
@@ -28,7 +34,9 @@ class ViewStudent extends Component {
             <div>
                 <br></br>
                 <h3 className="text-center"> View Student Details</h3>
+                <hr />
 
+                <h4>Personal Information</h4>
                 <div className="card col-md-6 offset-md-3">
                     <div className="card-body">
                         <div className="row">
@@ -51,6 +59,7 @@ class ViewStudent extends Component {
                             <label> Student Semester: </label>
                             <div> {this.state.student.semester}</div>
                         </div>
+
                         {/* UPDATE STUDENT */}
                         <button
                             style={{ float: "right", fontWeight: "bold" }}
@@ -59,13 +68,42 @@ class ViewStudent extends Component {
                     </div>
                 </div>
 
+                <div style={{ marginTop: "50px" }}>
+                    <h4>Subjects For This Semester</h4>
+                    <table className="table table-hover table-striped table-white ">
+                        <thead style={{ textAlign: "center" }}>
+                            <tr>
+                                <th>TECHNOLOGY</th>
+                                <th>INDUSTRIAL</th>
+                                <th>BUSINESS</th>
+                                <th>POLITICAL</th>
+                            </tr>
+                        </thead>
 
 
+                        <tbody style={{ textAlign: "center" }}>
+                            {
+                                this.state.fields
+                                    .filter(x => x.id === this.state.student.semester)
+                                    .map(
+                                        field =>
+                                            <tr>
+                                                <td>{field.technology}</td>
+                                                <td>{field.industrial}</td>
+                                                <td>{field.business}</td>
+                                                <td>{field.political}</td>
+                                            </tr>
+                                    )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+
+                <Link to="/" className="btn btn-secondary">Back</Link>
             </div>
         )
     }
-
-
 }
 
 export default ViewStudent
