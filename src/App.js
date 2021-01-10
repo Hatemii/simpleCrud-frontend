@@ -36,8 +36,8 @@ export default class App extends Component {
 
 
             <Route path="/master" exact component={MasterComponents}></Route>
-            <Route path="/add-masterField/:id" exact component={CreateMasterField}></Route>
-            <Route path="/update-study-field/:id" exact component={UpdateMasterFiled}></Route>
+            <Route path="/master/add-masterField/:id" exact component={CreateMasterField}></Route>
+            <Route path="/master/update-master-field/:id" exact component={UpdateMasterFiled}></Route>
 
           </div>
 

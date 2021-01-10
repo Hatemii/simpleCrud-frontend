@@ -46,7 +46,7 @@ class UpdateFields extends Component {
     }
 
 
-    updateStudents = (e) => {
+    updateBachelorFields = (e) => {
         e.preventDefault();
         let field = {
             technology: this.state.technology,
@@ -104,7 +104,7 @@ class UpdateFields extends Component {
                                 </div>
 
 
-                                <button className="btn btn-success" onClick={this.updateStudents}>Save <FaSave size={15} /> </button>
+                                <button className="btn btn-success" onClick={this.updateBachelorFields}>Save <FaSave size={15} /> </button>
                                 <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>
                             </form>
                         </div>
