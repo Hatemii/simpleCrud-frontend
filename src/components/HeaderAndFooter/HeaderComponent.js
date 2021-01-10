@@ -20,6 +20,7 @@ class HeaderComponent extends Component {
                     <li><a href="/">HOME</a></li>
                     <li><a href="/students">STUDENTS</a></li>
                     <li><a href="/bachelor">BACHELOR</a></li>
+                    <li><a href="/master">MASTER</a></li>
                 </ul>
             </div >
         )

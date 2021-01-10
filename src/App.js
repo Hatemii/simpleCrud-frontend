@@ -11,6 +11,9 @@ import CreateBachelorStudyField from './components/Bachelor/CreateBachelorStudyF
 import UpdateFields from "./components/Bachelor/UpdateFields"
 import ViewStudent from './components/Students/ViewStudent';
 import Home from './components/Home/Home';
+import MasterComponents from './components/Master/MasterComponents';
+import CreateMasterField from './components/Master/CreateMasterField';
+import UpdateMasterFiled from "./components/Master/UpdateMasterField"
 
 export default class App extends Component {
   render() {
@@ -30,6 +33,12 @@ export default class App extends Component {
             <Route path="/bachelor" exact component={BachelorComponent}></Route>
             <Route path="/add-bachelorField/:id" component={CreateBachelorStudyField}></Route>
             <Route path="/update-study-field/:id" component={UpdateFields}></Route>
+
+
+            <Route path="/master" exact component={MasterComponents}></Route>
+            <Route path="/add-masterField/:id" exact component={CreateMasterField}></Route>
+            <Route path="/update-study-field/:id" exact component={UpdateMasterFiled}></Route>
+
           </div>
 
         </Router>
