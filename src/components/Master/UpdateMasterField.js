@@ -11,7 +11,8 @@ export default class UpdateMasterField extends Component {
             technology: "",
             industrial: "",
             business: "",
-            political: ""
+            political: "",
+            semester: ""
         }
     }
 
@@ -22,7 +23,8 @@ export default class UpdateMasterField extends Component {
                 technology: field.technology,
                 industrial: field.industrial,
                 business: field.business,
-                political: field.political
+                political: field.political,
+                semester: field.semester
             })
         })
     }
@@ -44,6 +46,9 @@ export default class UpdateMasterField extends Component {
         this.setState({ political: e.target.value })
     }
 
+    changeSemesterField = (e) => {
+        this.setState({ semester: e.target.value })
+    }
 
     updateMasterFields = (e) => {
         e.preventDefault();
@@ -51,7 +56,8 @@ export default class UpdateMasterField extends Component {
             technology: this.state.technology,
             industrial: this.state.industrial,
             business: this.state.business,
-            political: this.state.political
+            political: this.state.political,
+            semester: this.state.semester
         }
         MasterService.updateStudyField(this.state.id, field).then(res => {
             this.props.history.push("/master")
@@ -101,6 +107,13 @@ export default class UpdateMasterField extends Component {
                                         value={this.state.political} onChange={this.changePoliticalField} />
                                 </div>
 
+
+                                {/* INPUT SEMESTER */}
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputSemester">Semester</label>
+                                    <input placeholder="Semester Field" name="semester" className="form-control"
+                                        value={this.state.semester} onChange={this.changeSemesterField} />
+                                </div>
 
                                 <button className="btn btn-success" onClick={this.updateMasterFields}>Save <FaSave size={15} /> </button>
                                 <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>

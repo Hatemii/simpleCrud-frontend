@@ -85,7 +85,7 @@ class ViewStudent extends Component {
                         <tbody style={{ textAlign: "center" }}>
                             {
                                 this.state.fields
-                                    .filter(x => x.id === this.state.student.semester)
+                                    .filter(x => x.semester === this.state.student.semester)
                                     .map(
                                         field =>
                                             <tr key={field.id}>

@@ -43,7 +43,7 @@ export default class App extends Component {
 
         </Router>
 
-        <FooterComponent />
+        {/* <FooterComponent /> */}
       </div >
     );
   }

@@ -57,12 +57,13 @@ export default class MasterComponents extends Component {
                 <table className="table table-hover table-striped table-dark ">
                     <thead style={{ textAlign: "center" }}>
                         <tr>
-                            <th>SEMESTER</th>
                             <th>TECHNOLOGY</th>
                             <th>INDUSTRIAL</th>
                             <th>BUSINESS</th>
                             <th>POLITICAL</th>
+                            <th>SEMESTER</th>
                             <th>ACTION</th>
+
                         </tr>
                     </thead>
 
@@ -72,11 +73,12 @@ export default class MasterComponents extends Component {
                             this.state.masterFields.map(
                                 field =>
                                     <tr key={field.id}>
-                                        <td>{field.id}</td>
                                         <td>{field.technology}</td>
                                         <td>{field.industrial}</td>
                                         <td>{field.business}</td>
                                         <td>{field.political}</td>
+                                        <td>{field.semester}</td>
+
 
 
                                         <td>
