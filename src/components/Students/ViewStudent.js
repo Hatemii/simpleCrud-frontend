@@ -10,7 +10,7 @@ class ViewStudent extends Component {
         this.state = {
             id: this.props.match.params.id,
             student: {},
-            fields: []
+            bachelorFields: []
         }
     }
 
@@ -20,8 +20,10 @@ class ViewStudent extends Component {
         });
 
         BachelorService.getAllStudyFields().then(res => {
-            this.setState({ fields: res.data });
-        })
+            this.setState({ bachelorFields: res.data });
+        });
+
+
     }
 
 
@@ -86,7 +88,7 @@ class ViewStudent extends Component {
 
                         <tbody style={{ textAlign: "center" }}>
                             {
-                                this.state.fields
+                                this.state.bachelorFields
                                     .filter(x => x.semester === this.state.student.semester)
                                     .map(
                                         field =>

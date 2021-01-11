@@ -57,7 +57,7 @@ class UpdateStudent extends Component {
         }
 
         UserService.updateStudent(this.state.id, student).then(res => {
-            this.props.history.push("/");
+            this.props.history.push("/students");
         })
     }
 

@@ -61,13 +61,13 @@ class CreateStudent extends Component {
         }
         if (this.state.id === '_add') {
             UserService.createStudent(student).then(res => {
-                this.props.history.push("/");
+                this.props.history.push("/students");
             });
         }
     }
 
     cancelButton() {
-        this.props.history.push("/");
+        this.props.history.push("/students");
     }
 
     render() {
