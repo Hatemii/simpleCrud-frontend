@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import UserService from "../../service/StudentService"
+import StudentService from "../../service/StudentService"
 import BachelorService from "../../service/BachelorService"
+import MasterService from "../../service/MasterService"
 import { Link } from "react-router-dom"
 
 class ViewStudent extends Component {
@@ -10,12 +11,14 @@ class ViewStudent extends Component {
         this.state = {
             id: this.props.match.params.id,
             student: {},
-            bachelorFields: []
+            bachelorFields: [],
+            masterFields: [],
+            allFields: []
         }
     }
 
     componentDidMount() {
-        UserService.getStudentById(this.state.id).then(res => {
+        StudentService.getStudentById(this.state.id).then(res => {
             this.setState({ student: res.data });
         });
 
@@ -23,7 +26,9 @@ class ViewStudent extends Component {
             this.setState({ bachelorFields: res.data });
         });
 
-
+        MasterService.getAllStudyFields().then(res => {
+            this.setState({ masterFields: res.data })
+        });
     }
 
 
@@ -32,6 +37,11 @@ class ViewStudent extends Component {
     }
 
     render() {
+
+        var arr1 = this.state.bachelorFields
+        var arr2 = this.state.masterFields
+        const allFieldsTogether = arr1.concat(arr2)
+
         return (
             <div>
                 <h3 className="text-center"> {this.state.student.name} {this.state.student.surname} - Profile</h3>
@@ -85,21 +95,20 @@ class ViewStudent extends Component {
                             </tr>
                         </thead>
 
-
                         <tbody style={{ textAlign: "center" }}>
-                            {
-                                this.state.bachelorFields
-                                    .filter(x => x.semester === this.state.student.semester)
-                                    .map(
-                                        field =>
-                                            <tr key={field.id}>
-                                                <td>{field.technology}</td>
-                                                <td>{field.industrial}</td>
-                                                <td>{field.business}</td>
-                                                <td>{field.political}</td>
-                                            </tr>
-                                    )
+                            {allFieldsTogether
+                                .filter(student => student.semester === this.state.student.semester)
+                                .map(
+                                    field =>
+                                        <tr key={field.id}>
+                                            <td>{field.technology}</td>
+                                            <td>{field.industrial}</td>
+                                            <td>{field.business}</td>
+                                            <td>{field.political}</td>
+                                        </tr>
+                                )
                             }
+
                         </tbody>
                     </table>
                 </div>
