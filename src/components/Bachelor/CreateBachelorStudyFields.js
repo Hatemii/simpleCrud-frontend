@@ -13,7 +13,8 @@ class CreateBachelorStudyField extends Component {
             technology: "",
             industrial: "",
             business: "",
-            political: ""
+            political: "",
+            semester: ""
         }
 
     }
@@ -28,7 +29,8 @@ class CreateBachelorStudyField extends Component {
                     technology: field.technology,
                     industrial: field.industrial,
                     business: field.business,
-                    political: field.political
+                    political: field.political,
+                    semester: field.semester,
                 });
             });
         }
@@ -50,6 +52,9 @@ class CreateBachelorStudyField extends Component {
         this.setState({ political: e.target.value })
     }
 
+    createSemesterField = (e) => {
+        this.setState({ semester: e.target.value })
+    }
 
     createFields = (e) => {
         e.preventDefault();
@@ -57,13 +62,16 @@ class CreateBachelorStudyField extends Component {
             technology: this.state.technology,
             industrial: this.state.industrial,
             business: this.state.business,
-            political: this.state.political
+            political: this.state.political,
+            semester: this.state.semester
         }
         if (this.state.id === '_add') {
             BachelorService.insertStudyField(field).then(res => {
                 this.props.history.push("/bachelor");
             });
         }
+
+        throw new Error("something went wrong with Create Bachelor Fields!")
     }
 
     cancelButton() {
@@ -107,6 +115,13 @@ class CreateBachelorStudyField extends Component {
                                         <label htmlFor="exampleInputPolitical">Political</label>
                                         <input placeholder="Political Field" name="political" className="form-control"
                                             value={this.state.political} onChange={this.createPoliticalField} />
+                                    </div>
+
+                                    {/* INPUT SEMESTER */}
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputSemester">Semester</label>
+                                        <input placeholder="Semester Field" name="semester" className="form-control"
+                                            value={this.state.semester} onChange={this.createSemesterField} />
                                     </div>
 
 

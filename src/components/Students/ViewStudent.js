@@ -32,7 +32,7 @@ class ViewStudent extends Component {
     render() {
         return (
             <div>
-                <h3 className="text-center"> View Student Details</h3>
+                <h3 className="text-center"> {this.state.student.name} {this.state.student.surname} - Profile</h3>
                 <hr />
                 <br></br>
                 <br></br>
@@ -69,6 +69,8 @@ class ViewStudent extends Component {
                     className="btn btn-primary">Update</button>
 
 
+
+                {/* on View Student get student semester study fields */}
                 <div style={{ marginTop: "80px" }}>
                     <h4>Subjects For This Semester</h4>
                     <table className="table table-hover table-striped table-white ">

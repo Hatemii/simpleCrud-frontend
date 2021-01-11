@@ -55,11 +55,11 @@ class BachelorComponent extends React.Component {
                 <table className="table table-hover table-striped table-dark ">
                     <thead style={{ textAlign: "center" }}>
                         <tr>
-                            <th>SEMESTER</th>
                             <th>TECHNOLOGY</th>
                             <th>INDUSTRIAL</th>
                             <th>BUSINESS</th>
                             <th>POLITICAL</th>
+                            <th>SEMESTER</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
@@ -70,15 +70,14 @@ class BachelorComponent extends React.Component {
                             this.state.bachelorFields.map(
                                 item =>
                                     <tr key={item.id}>
-                                        <td>{item.id}</td>
                                         <td>{item.technology}</td>
                                         <td>{item.industrial}</td>
                                         <td>{item.business}</td>
                                         <td>{item.political}</td>
+                                        <td>{item.semester}</td>
 
 
                                         <td>
-
                                             {/* UPDATE FIELD */}
                                             <button
                                                 onClick={() => this.editStudyField(item.id)}

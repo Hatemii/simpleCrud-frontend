@@ -40,7 +40,7 @@ class StudentComponent extends React.Component {
     render() {
         return (
             <div>
-                <h3>Student List 2020/2021</h3>
+                <h3>Student Lists 2020/2021</h3>
                 <hr />
 
                 {/* ADD NEW STUDENT BUTTON*/}
