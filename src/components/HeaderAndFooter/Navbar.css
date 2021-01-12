@@ -9,13 +9,14 @@
 .navbar ul {
     list-style-type: none;
     margin: 20px auto;
-    padding: 0;
+    padding: 10;
+    float: left;
 }
 
 .navbar li {
     font-size: 15px;
-    padding-left: 40px;
     float: left;
+    margin-right: 50px;
 }
 
 .navbar a {

@@ -16,12 +16,14 @@ class HeaderComponent extends Component {
                 <span><h5>
                     <a href="/">University Managemnet System</a>
                 </h5></span>
-                <ul>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/students">STUDENTS</a></li>
-                    <li><a href="/bachelor">BACHELOR</a></li>
-                    <li><a href="/master">MASTER</a></li>
-                </ul>
+                <div>
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/students">STUDENTS</a></li>
+                        <li><a href="/bachelor">BACHELOR</a></li>
+                        <li><a href="/master">MASTER</a></li>
+                    </ul>
+                </div>
             </div >
         )
     }

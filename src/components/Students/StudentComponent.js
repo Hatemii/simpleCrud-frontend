@@ -65,7 +65,7 @@ class StudentComponent extends React.Component {
                     <table className="table table-hover table-striped table-dark ">
                         <thead style={{ textAlign: "center" }}>
                             <tr>
-                                <th>ID</th>
+                                <th>STUDENT ID</th>
                                 <th>NAME</th>
                                 <th>SURNAME</th>
                                 <th>FIELD</th>
@@ -123,7 +123,7 @@ class StudentComponent extends React.Component {
                     <table className="table table-hover table-striped table-dark ">
                         <thead style={{ textAlign: "center" }}>
                             <tr>
-                                <th>ID</th>
+                                <th>STUDENT ID</th>
                                 <th>NAME</th>
                                 <th>SURNAME</th>
                                 <th>FIELD</th>
@@ -175,7 +175,7 @@ class StudentComponent extends React.Component {
 
 
 
-            </div>
+            </div >
         )
     }
 
