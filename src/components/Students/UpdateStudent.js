@@ -67,9 +67,6 @@ class UpdateStudent extends Component {
     }
 
     render() {
-
-        console.log(this.state.semester);
-
         return (
             <div>
                 <br></br>
