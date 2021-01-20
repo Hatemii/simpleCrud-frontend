@@ -108,8 +108,8 @@ class UpdateStudent extends Component {
                                     </div>
 
 
-                                    <button className="btn btn-success" onClick={this.updateStudents}>Save <FaSave size={15} /></button>
-                                    <button className="btn btn-danger" style={{ marginLeft: "5px" }} onClick={this.cancelButton.bind(this)}>Cancel <MdCancel size={15} /></button>
+                                    <button className="btn btn-success" type="button" onClick={this.updateStudents}>Save <FaSave size={15} /></button>
+                                    <button className="btn btn-danger" type="button" style={{ marginLeft: "5px" }} onClick={this.cancelButton.bind(this)}>Cancel <MdCancel size={15} /></button>
                                 </form>
                             </div>
                         </div>

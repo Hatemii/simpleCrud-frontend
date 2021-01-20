@@ -29,8 +29,6 @@ class ViewBachelorField extends Component {
                 <br></br>
                 <h3 className="text-center"> View Bachelor Fields</h3>
 
-                <h2>so wasted</h2>
-
                 <button
                     onClick={() => this.editStudent(this.state.id)}
                     className="btn btn-primary">Update</button>

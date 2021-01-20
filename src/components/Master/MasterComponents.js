@@ -85,12 +85,14 @@ export default class MasterComponents extends Component {
 
                                             {/* UPDATE FIELD */}
                                             <button
+                                                type="button"
                                                 onClick={() => this.editStudyField(field.id)}
                                                 className="btn btn-primary"><RiEdit2Fill size={16} /></button>
 
 
                                             {/* DELETE BY ID*/}
                                             <button
+                                                type="button"
                                                 style={{ marginLeft: "10px" }}
                                                 onClick={() => {
                                                     if (window.confirm('Are you sure that you want to delete this?'))

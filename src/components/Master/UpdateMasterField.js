@@ -116,7 +116,7 @@ export default class UpdateMasterField extends Component {
                                 </div>
 
                                 <button className="btn btn-success" onClick={this.updateMasterFields}>Save <FaSave size={15} /> </button>
-                                <button className="btn btn-danger" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>
+                                <button className="btn btn-danger" type="button" onClick={this.cancelButton.bind(this)} style={{ marginLeft: "10px" }}>Cancel <MdCancel size={15} /> </button>
                             </form>
                         </div>
                     </div>
